@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;family=Geist:wght@400;500;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#4f378a",
+                    "on-background": "#e6e0e9",
+                    "surface-variant": "#36343a",
+                    "surface-bright": "#3b383e",
+                    "secondary": "#cdc0e9",
+                    "surface-container": "#211f24",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-dim": "#141218",
+                    "on-primary-container": "#e0d2ff",
+                    "on-error": "#690005",
+                    "error": "#ffb4ab",
+                    "inverse-surface": "#e6e0e9",
+                    "secondary-container": "#4d4465",
+                    "on-surface-variant": "#cbc4d2",
+                    "on-tertiary": "#3e2e00",
+                    "on-secondary-container": "#bfb2da",
+                    "secondary-fixed": "#e9ddff",
+                    "inverse-primary": "#6750a4",
+                    "tertiary-fixed": "#ffdf93",
+                    "on-secondary-fixed": "#1f1635",
+                    "primary": "#cfbcff",
+                    "surface-container-high": "#2b292f",
+                    "surface-tint": "#cfbcff",
+                    "primary-fixed-dim": "#cfbcff",
+                    "inverse-on-surface": "#322f35",
+                    "background": "#141218",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#c9a74d",
+                    "surface-container-lowest": "#0f0d13",
+                    "on-primary": "#381e72",
+                    "tertiary-fixed-dim": "#e7c365",
+                    "surface-container-highest": "#36343a",
+                    "primary-fixed": "#e9ddff",
+                    "surface-container-low": "#1d1b20",
+                    "primary-container": "#6750a4",
+                    "on-tertiary-container": "#503d00",
+                    "on-secondary-fixed-variant": "#4b4263",
+                    "on-error-container": "#ffdad6",
+                    "surface": "#141218",
+                    "outline": "#948e9c",
+                    "on-secondary": "#342b4b",
+                    "on-surface": "#e6e0e9",
+                    "on-tertiary-fixed-variant": "#594400",
+                    "tertiary": "#e7c365",
+                    "on-primary-fixed": "#22005d",
+                    "outline-variant": "#494551",
+                    "secondary-fixed-dim": "#cdc0e9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "48px",
+                    "container-margin-desktop": "80px",
+                    "gutter": "24px",
+                    "stack-sm": "12px",
+                    "container-margin-mobile": "20px",
+                    "stack-md": "24px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "code-sm": ["JetBrains Mono"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Geist"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(33, 31, 36, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 40px -10px rgba(0,0,0,0.15);
+        }
+        .glass-border-gradient {
+            border: 1px solid transparent;
+            background-clip: padding-box, border-box;
+            background-origin: padding-box, border-box;
+            background-image: linear-gradient(to bottom, #211f24, #211f24), linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0));
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background: radial-gradient(circle at 50% 0%, #2a2244 0%, #141218 50%);
+            min-height: 100vh;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background font-body-md text-body-md overflow-x-hidden selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-surface/60 dark:bg-surface/60 backdrop-blur-md border-b border-white/20 dark:border-white/10 shadow-sm flex justify-between items-center px-gutter py-stack-sm">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/30 ring-2 ring-primary/10">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNCqsLyG-pP5uz3xyDagojNU0LuB9bFu7g79XtqWnWG5N50uPpxN0QCi9ocu5omxGZNNqn6Ek9QpXK2ELOCsXSWdGOlzP8OG5Cid3XsEbdouN1xCKP1bKnsBO7dR69Uwk-Y-MGsrqSCYqz8tRYxakR1gGCmM3xOTWaR8621WdtQ7IxgP_m-kmgm7SFjDKeCF-mHonxR814xz3IaYHzjR4UdEzR16KCgdPlmInJVc4mQElNN0gcJj83a2VbeRnP7Dky4ivo7ghMD_6g"/>
+</div>
+<div class="flex flex-col">
+<span class="text-[12px] opacity-60 uppercase tracking-widest font-bold">Engineer</span>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary dark:text-primary-fixed-dim">SkillForge</span>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="text-primary font-bold hover:opacity-80 transition-opacity" href="#">Home</a>
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Skills</a>
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Materials</a>
+</nav>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity text-[28px]">notifications</button>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-container-margin-mobile md:px-container-margin-desktop py-stack-md pb-32">
+<!-- Welcome & Hero -->
+<section class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
+<div class="flex-1">
+<h1 class="font-display-lg text-display-lg text-primary-fixed mb-stack-sm">Hello Future Engineer</h1>
+<p class="text-on-surface-variant max-w-2xl">Ready to forge new capabilities today? Your neural architecture is primed for optimization.</p>
+</div>
+<!-- Streak Widget -->
+<div class="glass-panel p-stack-md rounded-lg flex items-center gap-stack-md border-primary/20 bg-primary-container/10">
+<div class="relative w-12 h-12 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[32px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="absolute -inset-1 bg-tertiary/20 blur-xl rounded-full"></div>
+</div>
+<div>
+<div class="font-bold text-[24px]">12 Day Streak</div>
+<div class="text-[14px] opacity-70">Keep the momentum!</div>
+</div>
+</div>
+</section>
+<!-- Search Bar -->
+<div class="relative max-w-3xl mb-stack-lg group">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-low border border-white/10 rounded-full py-4 pl-12 pr-6 focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all placeholder:text-on-surface-variant/50 backdrop-blur-sm" placeholder="Search technologies, roadmaps, or mentors..." type="text"/>
+</div>
+<!-- Category Grid -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-stack-md">Specializations</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Programming -->
+<div class="glass-panel glass-border-gradient p-stack-md rounded-lg group hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+<div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-stack-sm ring-1 ring-primary/20">
+<span class="material-symbols-outlined text-primary text-[32px]">terminal</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-2">Programming</h3>
+<p class="text-on-surface-variant text-sm mb-4">Master algorithms, patterns, and high-performance languages.</p>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-primary/10 text-primary text-[12px] font-bold rounded-full uppercase tracking-tighter">14 Modules</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-[12px] font-bold rounded-full uppercase tracking-tighter">Advanced</span>
+</div>
+</div>
+<!-- AI & ML -->
+<div class="glass-panel glass-border-gradient p-stack-md rounded-lg group hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+<div class="w-14 h-14 bg-tertiary/10 rounded-xl flex items-center justify-center mb-stack-sm ring-1 ring-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-[32px]">psychology</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-2">AI &amp; Robotics</h3>
+<p class="text-on-surface-variant text-sm mb-4">Neural networks, computer vision, and autonomous systems.</p>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[12px] font-bold rounded-full uppercase tracking-tighter">8 Modules</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-[12px] font-bold rounded-full uppercase tracking-tighter">Trending</span>
+</div>
+</div>
+<!-- Web Architecture -->
+<div class="glass-panel glass-border-gradient p-stack-md rounded-lg group hover:scale-[1.02] transition-all duration-300 cursor-pointer">
+<div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-stack-sm ring-1 ring-secondary/20">
+<span class="material-symbols-outlined text-secondary text-[32px]">cloud_sync</span>
+</div>
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile mb-2">Web Systems</h3>
+<p class="text-on-surface-variant text-sm mb-4">Distributed architectures and full-stack engineering.</p>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-secondary/10 text-secondary text-[12px] font-bold rounded-full uppercase tracking-tighter">22 Modules</span>
+<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-[12px] font-bold rounded-full uppercase tracking-tighter">Full Track</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Trending Skills Slider -->
+<section class="mb-stack-lg">
+<div class="flex items-center justify-between mb-stack-md">
+<h2 class="font-headline-lg text-headline-lg">Trending Skills</h2>
+<button class="text-primary flex items-center gap-1 font-bold group">
+                    View All <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="flex gap-gutter overflow-x-auto pb-6 hide-scrollbar -mx-container-margin-mobile px-container-margin-mobile">
+<!-- Skill Card 1 -->
+<div class="min-w-[280px] glass-panel glass-border-gradient p-stack-md rounded-lg relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-all"></div>
+<div class="font-code-sm text-code-sm text-primary mb-2">#Rust</div>
+<div class="font-bold text-xl mb-4">Systems Performance</div>
+<div class="w-full bg-white/5 h-1 rounded-full mb-4 overflow-hidden">
+<div class="bg-primary h-full w-3/4 shadow-[0_0_10px_rgba(207,188,255,0.5)]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm opacity-60">75% of track</span>
+<button class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-sm font-bold shadow-lg shadow-primary/20">Resume</button>
+</div>
+</div>
+<!-- Skill Card 2 -->
+<div class="min-w-[280px] glass-panel glass-border-gradient p-stack-md rounded-lg relative overflow-hidden group">
+<div class="font-code-sm text-code-sm text-tertiary mb-2">#Python</div>
+<div class="font-bold text-xl mb-4">Neural Architectures</div>
+<div class="w-full bg-white/5 h-1 rounded-full mb-4 overflow-hidden">
+<div class="bg-tertiary h-full w-1/4 shadow-[0_0_10px_rgba(231,195,101,0.5)]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm opacity-60">25% of track</span>
+<button class="bg-tertiary text-on-tertiary px-4 py-1.5 rounded-full text-sm font-bold">Start</button>
+</div>
+</div>
+<!-- Skill Card 3 -->
+<div class="min-w-[280px] glass-panel glass-border-gradient p-stack-md rounded-lg relative overflow-hidden group">
+<div class="font-code-sm text-code-sm text-secondary mb-2">#DevOps</div>
+<div class="font-bold text-xl mb-4">Kubernetes Clusters</div>
+<div class="w-full bg-white/5 h-1 rounded-full mb-4 overflow-hidden">
+<div class="bg-secondary h-full w-1/2 shadow-[0_0_10px_rgba(205,192,233,0.5)]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm opacity-60">50% of track</span>
+<button class="bg-secondary text-on-secondary px-4 py-1.5 rounded-full text-sm font-bold">Resume</button>
+</div>
+</div>
+<!-- Skill Card 4 -->
+<div class="min-w-[280px] glass-panel glass-border-gradient p-stack-md rounded-lg relative overflow-hidden group">
+<div class="font-code-sm text-code-sm text-error mb-2">#Security</div>
+<div class="font-bold text-xl mb-4">Quantum Cryptography</div>
+<div class="w-full bg-white/5 h-1 rounded-full mb-4 overflow-hidden">
+<div class="bg-error h-full w-[10%] shadow-[0_0_10px_rgba(255,180,171,0.5)]"></div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm opacity-60">New Track</span>
+<button class="bg-error text-on-error px-4 py-1.5 rounded-full text-sm font-bold">Join</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Materials Bento -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-lg text-headline-lg mb-stack-md">Recommended Materials</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-gutter h-auto md:h-[500px]">
+<div class="md:col-span-2 md:row-span-2 glass-panel glass-border-gradient rounded-lg overflow-hidden group cursor-pointer relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A highly detailed cinematic shot of a futuristic data center hallway with glowing blue server racks and glass panels reflecting digital code. The lighting is cool-toned and atmospheric, emphasizing a professional engineering environment. Floating holographic interfaces show complex algorithms and network nodes. The overall aesthetic is minimalist, sleek, and technologically advanced." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEoVeD6EuSc79pGUpj-TTbRbOIaMtKIqlSA18LxzkHnFWI_e0plofqa63gP65RVn-V8jvDO15MLZfD5glSnf16C2zXffj9gZzIKIN9K4CmgmOyU-eMfBuwDPhUnwiXT21bm8x3lx0RAiuQRroNnRJwZgj6UK-LMsl8Uw14Y_8TcGfBfc9SSUuKUsTvQHoGtVRwMn6ctMt1O0a-OFq67u6Rse3Us3K0DQj1niYzgDuPkFmH2iQrXnZ7z8Sd0aaa4szvMexYFj84PA5G"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/40 to-transparent p-stack-md flex flex-col justify-end">
+<div class="flex gap-2 mb-2">
+<span class="bg-primary/20 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest text-primary">Paper</span>
+<span class="bg-white/10 backdrop-blur-md px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest">12 Min Read</span>
+</div>
+<h3 class="text-[28px] font-bold leading-tight mb-2">The Future of Concurrent Programming in Distributed Systems</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2">An in-depth analysis of how modern architectural paradigms are shifting towards stateless concurrency.</p>
+</div>
+</div>
+<div class="md:col-span-2 glass-panel glass-border-gradient rounded-lg flex flex-col md:flex-row overflow-hidden group cursor-pointer">
+<div class="w-full md:w-1/3 h-40 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A macro shot of a sophisticated microchip processor on a motherboard with glowing copper circuits and golden pins. The lighting is focused and warm, highlighting the intricate engineering of the hardware. The background is a soft blue bokeh of electronics. The style is professional and high-tech, suitable for an advanced engineering course cover." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeZjgq2eUd-0cfKNduBx2eENESnh6nRZDvk3lfbJhW7M3FFZK5cjQHA4fED2KKADoUMx7iWdswqiq4egarq-qNcQkHGXw4QcEdCnxc1w7EWqwXkF9ukwcmKxxlPwYfButnGTt3bln-A1njIGhGpaXD0DUt9F7r6KmKY1-peIQTuysONtZhMnYGsVb5rgKZ0XHVD1E-q7II3lJrf832sv-g55IH5Cf895_kqFg_VJfE9R8w34A1Zglne2tuMHt5bCrprg0yuV66Fu9l"/>
+</div>
+<div class="p-stack-md flex-1 flex flex-col justify-center">
+<h4 class="font-bold text-lg mb-1">Hardware Acceleration Masterclass</h4>
+<p class="text-on-surface-variant text-sm mb-4">Leveraging GPU clusters for massive AI throughput.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm">play_circle</span>
+<span class="text-xs font-bold text-primary">Video Course • 4.5 Hours</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-1 glass-panel glass-border-gradient rounded-lg p-stack-md flex flex-col justify-between group cursor-pointer">
+<div>
+<span class="material-symbols-outlined text-tertiary mb-stack-sm">auto_stories</span>
+<h4 class="font-bold text-lg leading-snug">Neural Network Topologies</h4>
+</div>
+<span class="text-xs font-bold opacity-50 uppercase tracking-widest">PDF Documentation</span>
+</div>
+<div class="md:col-span-1 glass-panel glass-border-gradient rounded-lg p-stack-md flex flex-col justify-between group cursor-pointer hover:bg-primary/5 transition-colors">
+<div>
+<span class="material-symbols-outlined text-secondary mb-stack-sm">data_object</span>
+<h4 class="font-bold text-lg leading-snug">API Gateway Best Practices</h4>
+</div>
+<span class="text-xs font-bold opacity-50 uppercase tracking-widest">E-Book</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-base left-gutter right-gutter h-16 bg-surface-container/70 dark:bg-surface-container/70 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-xl z-50 shadow-[0_40px_40px_-10px_rgba(0,0,0,0.15)] flex justify-around items-center px-4">
+<a class="flex flex-col items-center justify-center bg-primary-container/40 text-primary-fixed-dim rounded-full p-2 ring-1 ring-primary/50 shadow-[0_0_15px_rgba(207,188,255,0.3)] transition-all active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-bold mt-0.5">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-[10px] mt-0.5">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-[10px] mt-0.5">Materials</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[10px] mt-0.5">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors active:scale-90" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] mt-0.5">Profile</span>
+</a>
+</nav>
+<!-- FAB (Suppressed on Home as per rules but I'll add a minimal floating aura effect instead) -->
+<div class="fixed bottom-32 right-10 pointer-events-none select-none overflow-hidden hidden md:block">
+<div class="w-64 h-64 bg-primary/10 rounded-full blur-[100px] animate-float"></div>
+</div>
+<script>
+        // Simple micro-interaction for horizontal scrolling
+        const sliders = document.querySelectorAll('.overflow-x-auto');
+        sliders.forEach(slider => {
+            let isDown = false;
+            let startDate;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('active');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+            });
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+            slider.addEventListener('mousemove', (e) => {
+                if(!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+        // Background parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            document.body.style.backgroundPosition = `calc(50% + ${moveX}px) calc(0% + ${moveY}px)`;
+        });
+    </script>
+</body></html>

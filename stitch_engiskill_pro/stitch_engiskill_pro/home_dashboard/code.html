@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Home Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Geist:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #141218;
+            color: #e6e0e9;
+            font-family: 'Geist', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(33, 31, 36, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+        .inner-glow {
+            border: 1px solid rgba(207, 188, 255, 0.2);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #6750a4 0%, #381e72 100%);
+        }
+        .category-gradient-1 { background: linear-gradient(135deg, rgba(207, 188, 255, 0.2) 0%, rgba(103, 80, 164, 0.2) 100%); }
+        .category-gradient-2 { background: linear-gradient(135deg, rgba(231, 195, 101, 0.2) 0%, rgba(89, 68, 0, 0.2) 100%); }
+        
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#6750a4",
+                    "on-tertiary-fixed-variant": "#594400",
+                    "tertiary-container": "#c9a74d",
+                    "secondary-fixed-dim": "#cdc0e9",
+                    "primary-fixed": "#e9ddff",
+                    "on-surface": "#e6e0e9",
+                    "on-secondary-fixed": "#1f1635",
+                    "on-tertiary": "#3e2e00",
+                    "primary": "#cfbcff",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e6e0e9",
+                    "tertiary-fixed-dim": "#e7c365",
+                    "inverse-on-surface": "#322f35",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-container-high": "#2b292f",
+                    "primary-container": "#6750a4",
+                    "on-secondary": "#342b4b",
+                    "on-primary-fixed": "#22005d",
+                    "surface-container-lowest": "#0f0d13",
+                    "surface": "#141218",
+                    "on-primary-container": "#e0d2ff",
+                    "outline": "#948e9c",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-error": "#690005",
+                    "secondary-container": "#4d4465",
+                    "surface-dim": "#141218",
+                    "on-tertiary-container": "#503d00",
+                    "error": "#ffb4ab",
+                    "on-primary": "#381e72",
+                    "surface-container-low": "#1d1b20",
+                    "outline-variant": "#494551",
+                    "surface-tint": "#cfbcff",
+                    "surface-container": "#211f24",
+                    "on-background": "#e6e0e9",
+                    "surface-container-highest": "#36343a",
+                    "primary-fixed-dim": "#cfbcff",
+                    "on-primary-fixed-variant": "#4f378a",
+                    "surface-variant": "#36343a",
+                    "secondary": "#cdc0e9",
+                    "on-surface-variant": "#cbc4d2",
+                    "tertiary": "#e7c365",
+                    "on-secondary-fixed-variant": "#4b4263",
+                    "tertiary-fixed": "#ffdf93",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#bfb2da",
+                    "surface-bright": "#3b383e",
+                    "background": "#141218"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px",
+                    "stack-sm": "12px",
+                    "base": "8px",
+                    "container-margin-mobile": "20px",
+                    "container-margin-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Geist"],
+                    "code-sm": ["JetBrains Mono"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface mb-24">
+<!-- TopAppBar -->
+<header class="bg-surface/60 dark:bg-surface/60 backdrop-blur-md text-primary dark:text-primary-fixed-dim w-full sticky top-0 z-50 border-b border-white/20 dark:border-white/10 shadow-sm flex justify-between items-center px-gutter py-stack-sm h-16">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/30">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A cinematic, high-detail portrait of a young professional engineer with a friendly expression. The lighting is dramatic and futuristic, with soft blue and purple rim lights that match a high-tech laboratory aesthetic. The background is a blurred digital workspace with transparent interfaces, following a sophisticated glassmorphism design language with deep blacks and vibrant primary blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEDPnbrNJuBghQMmmgPWouTdwYR_QrqAOT3LvH-1JAmHF64WUWeCVw1InSRk9e16ooSPq3uO1ugiPjsV8QLtyXA0ET9y3wpirwGtQfjwAFo-JSS1yMkbSwhVXaY74IrREenwR3KlbDFEjT4DD_3n-2IioCoBjjio0gHlLSr72r7tYBzElPG4P-41OhwCpeK3aJbCEOtRSi4aFOg8riM5G-XtbWgjF_Ck8Wu7Egp1-BkGwwjyVD9iBp_x8h_ikcaJQxqM1hjzRXzzQ_"/>
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary dark:text-primary-fixed-dim">SkillForge</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="px-container-margin-mobile md:px-container-margin-desktop space-y-stack-md py-6">
+<!-- Hero Section & Streak -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg text-on-surface">Hello Future Engineer 👋</h1>
+<p class="font-body-md text-on-surface-variant max-w-lg">Your path to technical mastery is accelerating. Let's build something extraordinary today.</p>
+</div>
+<!-- Streak Widget -->
+<div class="glass-card inner-glow p-4 rounded-xl flex items-center gap-4 self-start md:self-auto">
+<div class="flex flex-col">
+<span class="font-code-sm text-primary uppercase tracking-widest">Learning Streak</span>
+<span class="font-headline-lg text-on-surface">7 Days</span>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+</div>
+</section>
+<!-- Search Bar -->
+<section class="relative w-full">
+<div class="glass-card inner-glow rounded-full px-6 py-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-body-md text-on-surface w-full placeholder:text-outline-variant" placeholder="Search skills, roadmaps, or documentation..." type="text"/>
+<kbd class="hidden md:flex items-center gap-1 font-code-sm text-outline-variant bg-surface-container rounded px-2 py-1">
+<span>⌘</span><span>K</span>
+</kbd>
+</div>
+</section>
+<!-- Hero Banner Carousel -->
+<section class="relative group overflow-hidden rounded-xl h-48 md:h-64 shadow-2xl">
+<div class="absolute inset-0 hero-gradient opacity-90"></div>
+<img alt="Master AI" class="w-full h-full object-cover mix-blend-overlay" data-alt="A sprawling, futuristic city landscape at dusk, rendered in a hyper-detailed digital art style. Central to the composition is a glowing brain-shaped neural network pulse that represents artificial intelligence. The color palette is dominated by deep indigo and vibrant electric purple, with golden light accents reflecting off glass skyscrapers. The mood is aspirational and technologically advanced, suggesting the scale and power of modern AI development." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCpodozPIN2Mior7AjobmutQARwbEZV0E4x7TrU_5ipJAkyD_0tecE1TCzkrPeAy5KYnRF6laX0bybojkjIsto18MooslaY97DP95XfPBiKBOV9n0NYiPH0qF_ghrliXcLXLAbj2WkHqaWkhR12xlJ3_2F0NJ-2OL_E-JZsv4ddBSRT4UTq5PBhytsY26lz-lExmE4b53KwfEtShHQz80wrVQRHlrSHJ13AmSOmE_7ONsNFPt7pVezKPPAp2mssnva5dJawv1yiyW6"/>
+<div class="absolute inset-0 p-gutter flex flex-col justify-center">
+<span class="bg-tertiary text-on-tertiary text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full self-start mb-4">New Path</span>
+<h2 class="font-headline-lg text-white mb-2">Master AI in 30 Days</h2>
+<p class="text-white/80 font-body-md max-w-md hidden md:block mb-6">A curated journey from neural network basics to deploying large language models.</p>
+<button class="bg-white text-primary-container px-6 py-2 rounded-full font-bold w-fit hover:scale-105 transition-transform active:scale-95">Enroll Now</button>
+</div>
+<!-- Indicators -->
+<div class="absolute bottom-4 right-4 flex gap-2">
+<div class="w-8 h-1 bg-white rounded-full"></div>
+<div class="w-2 h-1 bg-white/40 rounded-full"></div>
+<div class="w-2 h-1 bg-white/40 rounded-full"></div>
+</div>
+</section>
+<!-- Main Dashboard Content (Asymmetric Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-stack-md">
+<!-- Categories (Bento Left) -->
+<section class="md:col-span-8 space-y-stack-sm">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg-mobile text-on-surface">Skill Sectors</h3>
+<button class="text-primary font-body-md flex items-center gap-1">View All <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span></button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<!-- Category Card -->
+<div class="category-gradient-1 border border-white/5 p-6 rounded-lg flex flex-col items-center justify-center text-center gap-3 hover:border-primary/40 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-xl bg-primary-container/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="terminal">terminal</span>
+</div>
+<span class="font-body-md font-bold text-on-surface">Programming</span>
+</div>
+<!-- Category Card -->
+<div class="category-gradient-2 border border-white/5 p-6 rounded-lg flex flex-col items-center justify-center text-center gap-3 hover:border-tertiary/40 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="code">code</span>
+</div>
+<span class="font-body-md font-bold text-on-surface">Web Dev</span>
+</div>
+<!-- Category Card -->
+<div class="category-gradient-1 border border-white/5 p-6 rounded-lg flex flex-col items-center justify-center text-center gap-3 hover:border-primary/40 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-xl bg-primary-container/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="psychology">psychology</span>
+</div>
+<span class="font-body-md font-bold text-on-surface">AI / ML</span>
+</div>
+<!-- Category Card -->
+<div class="category-gradient-2 border border-white/5 p-6 rounded-lg flex flex-col items-center justify-center text-center gap-3 hover:border-tertiary/40 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="database">database</span>
+</div>
+<span class="font-body-md font-bold text-on-surface">Data Science</span>
+</div>
+<!-- Category Card -->
+<div class="category-gradient-1 border border-white/5 p-6 rounded-lg flex flex-col items-center justify-center text-center gap-3 hover:border-primary/40 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-xl bg-primary-container/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="cloud">cloud</span>
+</div>
+<span class="font-body-md font-bold text-on-surface">Cloud</span>
+</div>
+<!-- Category Card -->
+<div class="category-gradient-2 border border-white/5 p-6 rounded-lg flex flex-col items-center justify-center text-center gap-3 hover:border-tertiary/40 transition-all cursor-pointer group">
+<div class="w-12 h-12 rounded-xl bg-tertiary-container/30 flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="security">security</span>
+</div>
+<span class="font-body-md font-bold text-on-surface">Cybersecurity</span>
+</div>
+</div>
+</section>
+<!-- Sidebar Info (Bento Right) -->
+<section class="md:col-span-4 space-y-stack-md">
+<!-- Weekly Goal -->
+<div class="glass-card inner-glow p-6 rounded-xl flex flex-col items-center text-center gap-4">
+<h3 class="font-headline-lg-mobile text-on-surface">Weekly Goal</h3>
+<div class="relative w-32 h-32 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle cx="64" cy="64" fill="transparent" r="56" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
+<circle cx="64" cy="64" fill="transparent" r="56" stroke="url(#primaryGradient)" stroke-dasharray="351.8" stroke-dashoffset="70.36" stroke-linecap="round" stroke-width="8"></circle>
+<defs>
+<lineargradient id="primaryGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#cfbcff;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#6750a4;stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-lg text-primary">4/5</span>
+<span class="font-code-sm text-outline uppercase">Skills</span>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant">One more skill to hit your weekly milestone!</p>
+</div>
+<!-- Trending Skills -->
+<div class="space-y-stack-sm">
+<h3 class="font-headline-lg-mobile text-on-surface">Trending</h3>
+<div class="space-y-3">
+<div class="glass-card inner-glow p-4 rounded-lg flex items-center gap-4 relative overflow-hidden group hover:bg-surface-container-high/60 transition-colors cursor-pointer">
+<div class="absolute top-0 right-0 bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded-bl-lg font-bold">Trending</div>
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="robot_2">robot_2</span>
+</div>
+<div>
+<h4 class="font-body-md font-bold text-on-surface">AI Engineer</h4>
+<p class="text-[12px] text-on-surface-variant">1.2k users starting today</p>
+</div>
+</div>
+<div class="glass-card inner-glow p-4 rounded-lg flex items-center gap-4 relative overflow-hidden group hover:bg-surface-container-high/60 transition-colors cursor-pointer">
+<div class="absolute top-0 right-0 bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded-bl-lg font-bold">Trending</div>
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="cloud_done">cloud_done</span>
+</div>
+<div>
+<h4 class="font-body-md font-bold text-on-surface">Cloud Architect</h4>
+<p class="text-[12px] text-on-surface-variant">850 users starting today</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container/70 dark:bg-surface-container/70 backdrop-blur-xl text-primary dark:text-primary-fixed-dim fixed bottom-base left-gutter right-gutter rounded-xl z-50 border border-white/20 dark:border-white/10 shadow-[0_40px_40px_-10px_rgba(0,0,0,0.15)] flex justify-around items-center h-16 w-[calc(100%-48px)]">
+<a class="flex flex-col items-center justify-center bg-primary-container/40 text-primary-fixed-dim rounded-full p-2 ring-1 ring-primary/50 shadow-[0_0_15px_rgba(207,188,255,0.3)] transition-all transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300 transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="text-[10px] font-medium">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300 transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="text-[10px] font-medium">Materials</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300 transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="text-[10px] font-medium">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300 transform active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interactions for glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Add keyboard shortcut visual feedback
+        document.addEventListener('keydown', (e) => {
+            if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.querySelector('input[type="text"]');
+                searchInput.focus();
+                searchInput.parentElement.classList.add('ring-2', 'ring-primary');
+                setTimeout(() => searchInput.parentElement.classList.remove('ring-2', 'ring-primary'), 500);
+            }
+        });
+    </script>
+</body></html>

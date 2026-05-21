@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Engineering Mastery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Geist:wght@300;400;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#4f378a",
+                        "on-background": "#e6e0e9",
+                        "surface-variant": "#36343a",
+                        "surface-bright": "#3b383e",
+                        "secondary": "#cdc0e9",
+                        "surface-container": "#211f24",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-dim": "#141218",
+                        "on-primary-container": "#e0d2ff",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#e6e0e9",
+                        "secondary-container": "#4d4465",
+                        "on-surface-variant": "#cbc4d2",
+                        "on-tertiary": "#3e2e00",
+                        "on-secondary-container": "#bfb2da",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-primary": "#6750a4",
+                        "tertiary-fixed": "#ffdf93",
+                        "on-secondary-fixed": "#1f1635",
+                        "primary": "#cfbcff",
+                        "surface-container-high": "#2b292f",
+                        "surface-tint": "#cfbcff",
+                        "primary-fixed-dim": "#cfbcff",
+                        "inverse-on-surface": "#322f35",
+                        "background": "#141218",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#c9a74d",
+                        "surface-container-lowest": "#0f0d13",
+                        "on-primary": "#381e72",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "surface-container-highest": "#36343a",
+                        "primary-fixed": "#e9ddff",
+                        "surface-container-low": "#1d1b20",
+                        "primary-container": "#6750a4",
+                        "on-tertiary-container": "#503d00",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#141218",
+                        "outline": "#948e9c",
+                        "on-secondary": "#342b4b",
+                        "on-surface": "#e6e0e9",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "tertiary": "#e7c365",
+                        "on-primary-fixed": "#22005d",
+                        "outline-variant": "#494551",
+                        "secondary-fixed-dim": "#cdc0e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "container-margin-desktop": "80px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "container-margin-mobile": "20px",
+                        "stack-md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #141218;
+            color: #e6e0e9;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(33, 31, 36, 0.4);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 40px -10px rgba(0, 0, 0, 0.15);
+        }
+        .inner-glow-border {
+            border: 1px solid rgba(207, 188, 255, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(20, 18, 24, 0.2) 0%, rgba(20, 18, 24, 0.8) 80%, #141218 100%);
+        }
+        .input-inset {
+            background: rgba(15, 13, 19, 0.6);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        .floating-ui-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Main Container -->
+<main class="relative min-h-screen flex flex-col md:flex-row items-stretch justify-center overflow-hidden">
+<!-- Hero Section (Top on Mobile, Left on Desktop) -->
+<section class="relative w-full md:w-[55%] min-h-[50vh] md:min-h-screen overflow-hidden group">
+<div class="absolute inset-0 z-0">
+<img alt="Engineering student visual" class="w-full h-full object-cover scale-105 transition-transform duration-1000 group-hover:scale-100" src="https://lh3.googleusercontent.com/aida/ADBb0ujnoQHyvDv0_RmWIlgRCaJe-th9aoufFSeBxMH0HiD8c6wgyzJ3pg662aKTCrYlwbNmjniF9cG4iMHy-TzwOX-GntKB5OqjzfCaP6TMwR6YM5dd87LB0jmvp4hgQl8xbQYFJrqPwI9p85evP5MPKOJ0cHqIoGdfKEJPHkhj4nf3ilPSbejzGfWI3tKlD9H7DrAOExIiSB2LpZ1L7v4oCpe9G6bCe1Sce1bVm1-HGpKAZ-l1O16nDcpHjY3l"/>
+<div class="absolute inset-0 hero-gradient"></div>
+</div>
+<!-- Content Overlay -->
+<div class="relative z-10 flex flex-col items-center md:items-start justify-center h-full px-container-margin-mobile md:px-container-margin-desktop py-stack-lg">
+<div class="mb-stack-md flex items-center gap-4 floating-ui-element">
+<img alt="SkillForge Logo" class="h-16 w-16 md:h-20 md:w-20 object-contain drop-shadow-[0_0_15px_rgba(37,99,235,0.4)]" src="https://lh3.googleusercontent.com/aida/ADBb0ugMG2X_9QCi-hD8UfDLeiZ1xaGtWRrs8auu18NkFscyDgoSuEVYzZFyExQqeLVSWQknmu63qLceFv_rxOETJACQb8o2wmXKeOsWaBxSshdvqDhTJzUM-cyPzIbFES6RajQLa9xx-leFhUEjZtnds9QEo8AYu_4l-UIwSwge6ZyQrT2ibm2FhJbKx45IjBP-kF-q5BXW5k6PLwriQQnyVlBdohSRdhudkKCRQVZ6zalYchKB3jhPH8nMrU6p"/>
+<div class="flex flex-col">
+<span class="font-headline-lg-mobile md:font-headline-lg text-primary tracking-tight">SkillForge</span>
+<span class="text-on-surface-variant font-code-sm uppercase tracking-[0.2em] opacity-80">Engineering Nexus</span>
+</div>
+</div>
+<h1 class="font-headline-lg-mobile md:font-display-lg text-white max-w-xl text-center md:text-left leading-tight drop-shadow-lg">
+                    Upgrade Your Engineering Skills &amp; Build Your Career
+                </h1>
+<div class="mt-stack-md flex flex-wrap gap-stack-sm justify-center md:justify-start">
+<span class="px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-code-sm backdrop-blur-sm">
+                        AI INTEGRATED
+                    </span>
+<span class="px-4 py-1.5 rounded-full bg-tertiary/10 border border-tertiary/20 text-tertiary font-code-sm backdrop-blur-sm">
+                        CAD DESIGN
+                    </span>
+<span class="px-4 py-1.5 rounded-full bg-on-primary-fixed-variant/10 border border-on-primary-fixed-variant/20 text-secondary font-code-sm backdrop-blur-sm">
+                        PYTHON 3.12
+                    </span>
+</div>
+</div>
+</section>
+<!-- Login Section (Bottom on Mobile, Right on Desktop) -->
+<section class="relative w-full md:w-[45%] flex flex-col items-center justify-center p-container-margin-mobile md:p-gutter z-20">
+<!-- Glassmorphic Login Card -->
+<div class="glass-card w-full max-w-md p-stack-lg rounded-xl inner-glow-border relative">
+<!-- Background Glow Effect -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-primary/20 rounded-full blur-[60px] pointer-events-none"></div>
+<div class="absolute -bottom-12 -left-12 w-32 h-32 bg-secondary/10 rounded-full blur-[60px] pointer-events-none"></div>
+<div class="mb-stack-lg text-center md:text-left">
+<h2 class="font-headline-lg text-on-background mb-base">Welcome back, Engineer</h2>
+<p class="text-on-surface-variant opacity-80">Initialize your session to resume training modules.</p>
+</div>
+<form class="space-y-stack-md" onsubmit="event.preventDefault();">
+<!-- Email Field -->
+<div class="group">
+<label class="block font-code-sm text-on-surface-variant mb-2 ml-1 opacity-70" for="email">SYSTEM_ID / EMAIL</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant transition-colors group-focus-within:text-primary">alternate_email</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-lg input-inset border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/40 outline-none transition-all text-on-background placeholder:text-on-surface-variant/30" id="email" placeholder="engineer@skillforge.tech" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="group">
+<label class="block font-code-sm text-on-surface-variant mb-2 ml-1 opacity-70" for="password">ACCESS_ENCRYPTION / PASSWORD</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-on-surface-variant transition-colors group-focus-within:text-primary">lock_open</span>
+<input class="w-full h-14 pl-12 pr-12 rounded-lg input-inset border border-white/5 focus:border-primary focus:ring-1 focus:ring-primary/40 outline-none transition-all text-on-background placeholder:text-on-surface-variant/30" id="password" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<div class="mt-2 flex justify-end">
+<a class="text-primary text-sm hover:underline font-medium" href="#">Reset Credentials?</a>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-14 mt-4 bg-primary text-on-primary font-bold rounded-lg shadow-[0_0_20px_rgba(207,188,255,0.4)] hover:shadow-[0_0_30px_rgba(207,188,255,0.6)] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group">
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">login</span>
+                        SIGN IN
+                    </button>
+</form>
+<!-- Alternative Methods -->
+<div class="mt-stack-lg space-y-4">
+<div class="relative flex items-center py-2">
+<div class="flex-grow border-t border-white/10"></div>
+<span class="flex-shrink mx-4 text-xs font-code-sm text-on-surface-variant opacity-50">EXTERNAL LINK</span>
+<div class="flex-grow border-t border-white/10"></div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 h-12 rounded-lg bg-surface-container-high border border-white/10 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-xl">hub</span>
+<span class="text-sm font-medium">GitHub</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-12 rounded-lg bg-surface-container-high border border-white/10 hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-xl">school</span>
+<span class="text-sm font-medium">SSO</span>
+</button>
+</div>
+</div>
+<p class="mt-stack-lg text-center text-sm text-on-surface-variant">
+                    New operative? <a class="text-primary font-bold hover:underline" href="#">Deploy Account</a>
+</p>
+</div>
+<!-- Technical Footer Decor -->
+<div class="mt-stack-md flex gap-gutter opacity-30 pointer-events-none select-none">
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-code-sm">LAT_COORD</span>
+<span class="text-xs font-code-sm">34.0522° N</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-code-sm">LNG_COORD</span>
+<span class="text-xs font-code-sm">118.2437° W</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-code-sm">SYSTEM_LOAD</span>
+<span class="text-xs font-code-sm">NORMAL</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Ambient Micro-Interactions -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<!-- Floating Particles Effect Simulation -->
+<div class="w-full h-full" id="particle-container"></div>
+</div>
+<script>
+        // Simple ambient particle effect
+        const container = document.getElementById('particle-container');
+        const particleCount = 20;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'absolute bg-primary/20 rounded-full blur-xl';
+            
+            const size = Math.random() * 100 + 50;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.top = `${Math.random() * 100}%`;
+            
+            const duration = Math.random() * 10 + 10;
+            const delay = Math.random() * -20;
+            
+            particle.style.animation = `float ${duration}s infinite linear ${delay}s`;
+            
+            container.appendChild(particle);
+        }
+
+        // Dynamic Input Focus Effects
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.parentElement.classList.add('scale-[1.02]');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.parentElement.classList.remove('scale-[1.02]');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge Progress Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Geist:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#6750a4",
+                    "on-tertiary-fixed-variant": "#594400",
+                    "tertiary-container": "#c9a74d",
+                    "secondary-fixed-dim": "#cdc0e9",
+                    "primary-fixed": "#e9ddff",
+                    "on-surface": "#e6e0e9",
+                    "on-secondary-fixed": "#1f1635",
+                    "on-tertiary": "#3e2e00",
+                    "primary": "#cfbcff",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e6e0e9",
+                    "tertiary-fixed-dim": "#e7c365",
+                    "inverse-on-surface": "#322f35",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-container-high": "#2b292f",
+                    "primary-container": "#6750a4",
+                    "on-secondary": "#342b4b",
+                    "on-primary-fixed": "#22005d",
+                    "surface-container-lowest": "#0f0d13",
+                    "surface": "#141218",
+                    "on-primary-container": "#e0d2ff",
+                    "outline": "#948e9c",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-error": "#690005",
+                    "secondary-container": "#4d4465",
+                    "surface-dim": "#141218",
+                    "on-tertiary-container": "#503d00",
+                    "error": "#ffb4ab",
+                    "on-primary": "#381e72",
+                    "surface-container-low": "#1d1b20",
+                    "outline-variant": "#494551",
+                    "surface-tint": "#cfbcff",
+                    "surface-container": "#211f24",
+                    "on-background": "#e6e0e9",
+                    "surface-container-highest": "#36343a",
+                    "primary-fixed-dim": "#cfbcff",
+                    "on-primary-fixed-variant": "#4f378a",
+                    "surface-variant": "#36343a",
+                    "secondary": "#cdc0e9",
+                    "on-surface-variant": "#cbc4d2",
+                    "tertiary": "#e7c365",
+                    "on-secondary-fixed-variant": "#4b4263",
+                    "tertiary-fixed": "#ffdf93",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#bfb2da",
+                    "surface-bright": "#3b383e",
+                    "background": "#141218"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px",
+                    "stack-sm": "12px",
+                    "base": "8px",
+                    "container-margin-mobile": "20px",
+                    "container-margin-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Geist"],
+                    "code-sm": ["JetBrains Mono"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .inner-glow {
+            box-shadow: inset 0 0 20px rgba(207, 188, 255, 0.05);
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        body {
+            background-color: #141218;
+            color: #e6e0e9;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface/60 dark:bg-surface/60 backdrop-blur-md w-full sticky top-0 z-50 border-b border-white/20 dark:border-white/10 shadow-sm">
+<div class="flex justify-between items-center px-gutter py-stack-sm w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center border border-white/10 overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3PJ1qCEVdW5vkZuqY6eWZ-hJvRzmTOECpsirfl007x_9tILsEB26mYu_NRLrisqYKeABj21UKv-gq2yn6X9pWYO0UcVxXrD6KDUogU6kSH6J_ruOH1p3mu7fLU--FvMhKrjpI7bkFZ3PQQU60Wtr9Kxc1GHdHkT71Q8i61t1X1lXt_FOAmcm2ywbl8e8O9nnFvMA5-zN_m5B6-wgLsS3OCd9NgHEC56ZQpsOTSyhE6IZriTfZBcKUUAbf-O2hzlZlLz3Dx4O_cf6N"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary dark:text-primary-fixed-dim">Your Achievements</h1>
+</div>
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-gutter py-stack-md space-y-stack-md">
+<!-- Top Section: Overall Progress -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-stack-md">
+<div class="md:col-span-12 lg:col-span-5 glass-card rounded-lg p-stack-md flex flex-col items-center justify-center text-center space-y-stack-sm inner-glow">
+<div class="relative w-48 h-48">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-white/5 stroke-current" cx="50" cy="50" fill="transparent" hy="50" r="42" stroke-width="8"></circle>
+<circle class="text-primary stroke-current progress-ring-circle" cx="50" cy="50" fill="transparent" r="42" stroke-linecap="round" stroke-width="8" style="stroke-dasharray: 263.89; stroke-dashoffset: 73.88;"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-display-lg text-primary">72%</span>
+<span class="font-code-sm text-code-sm opacity-60">MASTERY</span>
+</div>
+</div>
+<div class="space-y-base">
+<h2 class="font-headline-lg text-headline-lg-mobile">Overall Progress</h2>
+<p class="text-on-surface-variant max-w-xs">You're in the top 5% of engineers this week. Keep up the high-velocity learning.</p>
+</div>
+</div>
+<!-- Stats Grid -->
+<div class="md:col-span-12 lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-stack-sm">
+<div class="glass-card rounded-lg p-stack-md flex flex-col justify-between border-t-2 border-t-primary/30">
+<div class="material-symbols-outlined text-primary mb-base" data-icon="schedule">schedule</div>
+<div>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Total Learning Hours</p>
+<p class="font-headline-lg text-headline-lg-mobile">48h</p>
+</div>
+</div>
+<div class="glass-card rounded-lg p-stack-md flex flex-col justify-between border-t-2 border-t-tertiary/30">
+<div class="material-symbols-outlined text-tertiary mb-base" data-icon="psychology">psychology</div>
+<div>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Skills Mastered</p>
+<p class="font-headline-lg text-headline-lg-mobile">12</p>
+</div>
+</div>
+<div class="glass-card rounded-lg p-stack-md flex flex-col justify-between border-t-2 border-t-error/30">
+<div class="material-symbols-outlined text-error mb-base" data-icon="local_fire_department">local_fire_department</div>
+<div>
+<p class="font-code-sm text-code-sm text-on-surface-variant">Current Streak</p>
+<p class="font-headline-lg text-headline-lg-mobile">15 Days</p>
+</div>
+</div>
+<!-- Recent Activity Bento -->
+<div class="sm:col-span-3 glass-card rounded-lg p-stack-md flex items-center gap-stack-md">
+<div class="w-16 h-16 rounded-md bg-secondary-container/30 flex items-center justify-center shrink-0 border border-white/10">
+<span class="material-symbols-outlined text-secondary" data-icon="terminal">terminal</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-primary font-code-sm text-code-sm px-2 py-0.5 bg-primary/10 rounded-full">Activity</span>
+<h3 class="font-body-md text-body-md mt-1">Completed: Intro to Docker</h3>
+</div>
+<span class="text-on-surface-variant text-xs font-code-sm">2h ago</span>
+</div>
+<div class="mt-2 h-1 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-full"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Weekly Graph & Achievement Section -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-stack-md">
+<!-- Weekly Graph -->
+<div class="md:col-span-8 glass-card rounded-lg p-stack-md space-y-stack-md overflow-hidden relative">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile">Weekly Velocity</h3>
+<div class="flex gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="font-code-sm text-[10px] text-on-surface-variant uppercase tracking-widest">Minutes Learned</span>
+</div>
+</div>
+<div class="flex items-end justify-between h-48 gap-2 pt-4">
+<!-- Monday -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-white/5 rounded-t-sm group-hover:bg-primary/20 transition-all duration-300 relative" style="height: 40%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-high text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">45m</div>
+</div>
+<span class="text-xs font-code-sm text-on-surface-variant">M</span>
+</div>
+<!-- Tuesday -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/40 rounded-t-sm group-hover:bg-primary/60 transition-all duration-300 relative" style="height: 75%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-high text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">90m</div>
+</div>
+<span class="text-xs font-code-sm text-on-surface-variant">T</span>
+</div>
+<!-- Wednesday -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-white/5 rounded-t-sm group-hover:bg-primary/20 transition-all duration-300 relative" style="height: 30%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-high text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">30m</div>
+</div>
+<span class="text-xs font-code-sm text-on-surface-variant">W</span>
+</div>
+<!-- Thursday -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/80 rounded-t-sm group-hover:bg-primary transition-all duration-300 relative shadow-[0_0_15px_rgba(207,188,255,0.3)]" style="height: 95%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-high text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">120m</div>
+</div>
+<span class="text-xs font-code-sm text-on-surface-variant">T</span>
+</div>
+<!-- Friday -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary/50 rounded-t-sm group-hover:bg-primary/70 transition-all duration-300 relative" style="height: 60%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-high text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">75m</div>
+</div>
+<span class="text-xs font-code-sm text-on-surface-variant">F</span>
+</div>
+<!-- Saturday -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-white/5 rounded-t-sm group-hover:bg-primary/20 transition-all duration-300 relative" style="height: 20%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-high text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">20m</div>
+</div>
+<span class="text-xs font-code-sm text-on-surface-variant">S</span>
+</div>
+<!-- Sunday -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-white/5 rounded-t-sm group-hover:bg-primary/20 transition-all duration-300 relative" style="height: 10%;">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-surface-container-high text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">10m</div>
+</div>
+<span class="text-xs font-code-sm text-on-surface-variant">S</span>
+</div>
+</div>
+</div>
+<!-- Achievement Badges -->
+<div class="md:col-span-4 glass-card rounded-lg p-stack-md space-y-stack-sm">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile">Milestones</h3>
+<div class="space-y-stack-sm">
+<!-- Gold Badge -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-gradient-to-r from-tertiary/10 to-transparent border border-tertiary/20">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-tertiary text-on-tertiary">
+<span class="material-symbols-outlined" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<p class="font-bold text-tertiary">Fast Learner</p>
+<p class="text-xs text-on-surface-variant">Gold Milestone</p>
+</div>
+</div>
+<!-- Silver Badge -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-gradient-to-r from-secondary/10 to-transparent border border-secondary/20">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-secondary text-on-secondary">
+<span class="material-symbols-outlined" data-icon="military_tech" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<div>
+<p class="font-bold text-secondary">Consistency Master</p>
+<p class="text-xs text-on-surface-variant">Silver Milestone</p>
+</div>
+</div>
+<!-- Locked Badge -->
+<div class="flex items-center gap-4 p-3 rounded-xl bg-surface-container-low/50 border border-white/5 opacity-50 grayscale">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-outline-variant/30 text-outline">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</div>
+<div>
+<p class="font-bold">Placement Ready</p>
+<p class="text-xs">Locked (Reach 90%)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Focus Area -->
+<section class="glass-card rounded-lg p-stack-md overflow-hidden relative">
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-stack-md">
+<div class="space-y-base max-w-xl">
+<span class="text-xs font-code-sm text-tertiary uppercase tracking-widest bg-tertiary/10 px-3 py-1 rounded-full border border-tertiary/20">Suggested Focus</span>
+<h3 class="font-headline-lg text-headline-lg-mobile">Kubernetes Networking</h3>
+<p class="text-on-surface-variant">Based on your recent activity in Docker, you're ready to master orchestration. This module will boost your profile by 15%.</p>
+<button class="mt-4 px-6 py-3 bg-primary text-on-primary rounded-full font-bold hover:scale-105 transition-transform duration-200">Start Learning Now</button>
+</div>
+<div class="w-full md:w-64 h-40 rounded-xl overflow-hidden glass-card">
+<img class="w-full h-full object-cover" data-alt="A futuristic 3D visualization of a complex network mesh with glowing light nodes and connecting ethereal lines in a dark, high-tech environment. The lighting is dominated by deep blues and violets, reflecting a professional software engineering aesthetic. The composition is sleek and minimalist, emphasizing technological structure and complexity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGurknYYuH9LCT3EV5gfdg0SPjPHCBil1pocUhEjNH7zw3igWsCLQROz2AUfjcGpKKCPQXIClXz2kn42FOAY_8PgqZJObelKvbIAlOIaxNZK5C-uZIomzpJjZO0TYyVI4I5okqDxkmzM4bSdG5hHZCSsaN-c_vo_HxwgFfo3ZW23dsQoBrK8jnqdIE6xoG6nrovpj8nIyTsfAyXfAtfUVKZBWgMo9D3SuOcgtFqD0ZwhhrvciUZVygka9ECxkNR9HCcoH2t9Tqtb0d"/>
+</div>
+</div>
+<!-- Atmospheric glow behind content -->
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-primary/10 blur-[100px] rounded-full pointer-events-none"></div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-base left-gutter right-gutter rounded-xl z-50 bg-surface-container/70 dark:bg-surface-container/70 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_40px_40px_-10px_rgba(0,0,0,0.15)] md:max-w-xl md:mx-auto">
+<div class="flex justify-around items-center h-16 w-full">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-body-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-body-md text-[10px]">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+<span class="font-body-md text-[10px]">Materials</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/40 text-primary-fixed-dim rounded-full p-2 ring-1 ring-primary/50 shadow-[0_0_15px_rgba(207,188,255,0.3)]" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-body-md text-[10px]">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body-md text-[10px]">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

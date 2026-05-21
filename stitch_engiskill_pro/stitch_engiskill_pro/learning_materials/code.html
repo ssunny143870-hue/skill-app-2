@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge - Learning Materials</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700;800&amp;family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            backdrop-filter: blur(16px);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+        }
+        .inner-glow {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#6750a4",
+                    "on-tertiary-fixed-variant": "#594400",
+                    "tertiary-container": "#c9a74d",
+                    "secondary-fixed-dim": "#cdc0e9",
+                    "primary-fixed": "#e9ddff",
+                    "on-surface": "#e6e0e9",
+                    "on-secondary-fixed": "#1f1635",
+                    "on-tertiary": "#3e2e00",
+                    "primary": "#cfbcff",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#e6e0e9",
+                    "tertiary-fixed-dim": "#e7c365",
+                    "inverse-on-surface": "#322f35",
+                    "secondary-fixed": "#e9ddff",
+                    "surface-container-high": "#2b292f",
+                    "primary-container": "#6750a4",
+                    "on-secondary": "#342b4b",
+                    "on-primary-fixed": "#22005d",
+                    "surface-container-lowest": "#0f0d13",
+                    "surface": "#141218",
+                    "on-primary-container": "#e0d2ff",
+                    "outline": "#948e9c",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-error": "#690005",
+                    "secondary-container": "#4d4465",
+                    "surface-dim": "#141218",
+                    "on-tertiary-container": "#503d00",
+                    "error": "#ffb4ab",
+                    "on-primary": "#381e72",
+                    "surface-container-low": "#1d1b20",
+                    "outline-variant": "#494551",
+                    "surface-tint": "#cfbcff",
+                    "surface-container": "#211f24",
+                    "on-background": "#e6e0e9",
+                    "surface-container-highest": "#36343a",
+                    "primary-fixed-dim": "#cfbcff",
+                    "on-primary-fixed-variant": "#4f378a",
+                    "surface-variant": "#36343a",
+                    "secondary": "#cdc0e9",
+                    "on-surface-variant": "#cbc4d2",
+                    "tertiary": "#e7c365",
+                    "on-secondary-fixed-variant": "#4b4263",
+                    "tertiary-fixed": "#ffdf93",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-container": "#bfb2da",
+                    "surface-bright": "#3b383e",
+                    "background": "#141218"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-lg": "48px",
+                    "stack-md": "24px",
+                    "stack-sm": "12px",
+                    "base": "8px",
+                    "container-margin-mobile": "20px",
+                    "container-margin-desktop": "80px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Geist"],
+                    "code-sm": ["JetBrains Mono"],
+                    "display-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen selection:bg-primary/30 selection:text-primary-fixed">
+<!-- TopAppBar -->
+<header class="bg-surface/60 dark:bg-surface/60 backdrop-blur-md w-full sticky top-0 z-50 border-b border-white/20 dark:border-white/10 shadow-sm flex justify-between items-center px-gutter py-stack-sm w-full">
+<div class="flex items-center gap-base">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9t0VMvOenwFG7OihKWHl_vOuo2xjUvjcX0DCfOrdI9m4Y0g1a3qkdIFNhleJB-QojLG83PjfqwpZy4TtYVTC8Z_8forb4aEdFE7Zl4CGolpp4h44SRb5EgbbPwND0qkS2BXW_BK7VeMx4vz9dOZwaE3NQmOcuvq8EYTBT-wwqGn1x1qzw43ZC2gRNBhNMYGTUwws_3GOOF6yx9IyoHIvu1gGsjoXp6hn5qqDomWwiMw4JNX-G8AlvWBjgYUblaEWniZbJxMAfAwbf"/>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary dark:text-primary-fixed-dim">Materials</h1>
+</div>
+<div class="flex items-center gap-stack-sm">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity active:scale-95 duration-200" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="pb-32">
+<!-- Search & Welcome Section (High-end Hero Pattern) -->
+<section class="px-gutter pt-stack-md pb-stack-sm">
+<div class="glass-card inner-glow rounded-xl p-stack-md relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/20 blur-3xl rounded-full"></div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-base">Master your craft.</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[80%]">Curated learning paths designed for the modern engineer.</p>
+</div>
+</section>
+<!-- Filter Bar -->
+<section class="px-gutter mb-stack-md overflow-x-auto hide-scrollbar flex gap-stack-sm py-base">
+<button class="px-stack-md py-base bg-primary-container text-on-primary-container rounded-full font-body-md text-body-md shadow-sm border border-white/10 hover:opacity-90 transition-all whitespace-nowrap">All</button>
+<button class="px-stack-md py-base bg-surface-container-high text-on-surface-variant rounded-full font-body-md text-body-md border border-white/5 hover:bg-surface-container-highest transition-all whitespace-nowrap">Programming</button>
+<button class="px-stack-md py-base bg-surface-container-high text-on-surface-variant rounded-full font-body-md text-body-md border border-white/5 hover:bg-surface-container-highest transition-all whitespace-nowrap">AI</button>
+<button class="px-stack-md py-base bg-surface-container-high text-on-surface-variant rounded-full font-body-md text-body-md border border-white/5 hover:bg-surface-container-highest transition-all whitespace-nowrap">Web Dev</button>
+<div class="flex items-center gap-1 px-stack-md py-base bg-surface-container-high text-on-surface-variant rounded-full font-body-md text-body-md border border-white/5 hover:bg-surface-container-highest transition-all whitespace-nowrap">
+<span>Difficulty</span>
+<span class="material-symbols-outlined text-[18px]">expand_more</span>
+</div>
+</section>
+<!-- Material Cards List -->
+<section class="px-gutter flex flex-col gap-stack-md">
+<!-- Card 1 -->
+<div class="glass-card inner-glow rounded-lg overflow-hidden group hover:shadow-[0_40px_40px_-10px_rgba(207,188,255,0.1)] transition-all duration-500 cursor-pointer">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A cinematic, high-detail macro shot of shimmering abstract crystalline structures reflecting vibrant purple and deep violet laboratory lighting. The scene evokes a sense of advanced software architecture with translucent glass-like layers and subtle refractive glimmers. The atmosphere is professional, tech-focused, and highly polished, using a sophisticated dark mode palette with Engineering Blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgvOHJc3svaa7vmX9eYs_m-GB9ISA5MnzJ9QXJ2Dcb5e8n_FIjNJNg9i18z3dk5WyFbQbK5LheWrfn5pXps903XmeQkzXrW1k6d3Kep3lNeqIavRn3RoeGppV68Lj1VPHc122TEhTEdIxJ1AO6fl8m1HXzAwQGzXmga4SLilnURaQVty_jjjOXRe37aeeIedzJPVimhfeSPr53ulk_Da7O4hB3YTMaZwBcbkYtkc_8ErQ1ATMh0ySb_9kyRHF385AHE-jFN4SlFuua"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-secondary-container/90 text-on-secondary-container px-base py-1 rounded-full font-code-sm text-code-sm backdrop-blur-md border border-white/10 uppercase tracking-wider">Intermediate</span>
+</div>
+</div>
+<div class="p-stack-md">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-base group-hover:text-primary transition-colors">Advanced React Patterns</h3>
+<div class="flex items-center justify-between text-on-surface-variant font-body-md text-body-md">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>2h 30m</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface font-semibold">4.8</span>
+</div>
+</div>
+<div class="mt-stack-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-primary/80">Skill: Composition &amp; Hooks</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="glass-card inner-glow rounded-lg overflow-hidden group hover:shadow-[0_40px_40px_-10px_rgba(207,188,255,0.1)] transition-all duration-500 cursor-pointer">
+<div class="relative h-48 w-full">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An intricate digital visualization of neural network pathways glowing with neon primary blue and gold electricity against a dark, foggy background. The aesthetic is futuristic minimalism, representing deep learning and artificial intelligence in a high-tech laboratory setting. Sharp light rays pierce through translucent glass modules, creating a sense of engineering depth and professional precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRdCpWxl8qf2PFM_r3-tjDeuxyrU9PYb7IHxsRUzWZmeSIyj-DJvt7eYdp6FJsXy_-eh4bWbFHCdc8BmPBRY0l2oP1TzKFjf7ojgbcsJv5UQQj4-hkiPspZMOW4kw-9MA9msvDnm6SKvnUPxtzt5rEDva9wTSe611Z5BZd4iYEu5BVqs-ulqNS-SyQ_iKOAezrOi-XoyQlj_Ojqo_EtQeQkPkHAqFaaepRCd-33a5RDbv_huc2zLRy25-C_GNgZ-jtiEpp0tuAjuVK"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="w-10 h-10 rounded-full bg-surface/80 backdrop-blur-md flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">bookmark</span>
+</button>
+</div>
+<div class="absolute bottom-4 left-4">
+<span class="bg-error-container/80 text-on-error-container px-base py-1 rounded-full font-code-sm text-code-sm backdrop-blur-md border border-white/10 uppercase tracking-wider">Advanced</span>
+</div>
+</div>
+<div class="p-stack-md">
+<h3 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-base group-hover:text-primary transition-colors">Deep Learning with Python</h3>
+<div class="flex items-center justify-between text-on-surface-variant font-body-md text-body-md">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>5h 15m</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-on-surface font-semibold">4.9</span>
+</div>
+</div>
+<div class="mt-stack-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<span class="font-code-sm text-code-sm text-tertiary/80">Skill: Neural Networks</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button: Search -->
+<button class="fixed bottom-32 right-gutter w-14 h-14 bg-primary text-on-primary rounded-xl flex items-center justify-center shadow-[0_20px_40px_rgba(207,188,255,0.4)] z-40 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined text-[28px]">search</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="bg-surface-container/70 dark:bg-surface-container/70 backdrop-blur-xl fixed bottom-base left-gutter right-gutter rounded-xl z-50 border border-white/20 dark:border-white/10 shadow-[0_40px_40px_-10px_rgba(0,0,0,0.15)] flex justify-around items-center h-16 w-[calc(100%-48px)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-body-md text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-body-md text-[10px] mt-1">Skills</span>
+</a>
+<!-- ACTIVE TAB: Materials -->
+<a class="flex flex-col items-center justify-center bg-primary-container/40 text-primary-fixed-dim rounded-full p-2 ring-1 ring-primary/50 shadow-[0_0_15px_rgba(207,188,255,0.3)] scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="library_books" style="font-variation-settings: 'FILL' 1;">library_books</span>
+<span class="font-body-md text-[10px] mt-1">Materials</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-body-md text-[10px] mt-1">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-body-md text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction: Active state feedback for filter chips
+        const chips = document.querySelectorAll('button.rounded-full');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    if(c.innerText !== 'Difficulty') {
+                        c.classList.remove('bg-primary-container', 'text-on-primary-container');
+                        c.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                    }
+                });
+                if(chip.innerText !== 'Difficulty') {
+                    chip.classList.add('bg-primary-container', 'text-on-primary-container');
+                    chip.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                }
+            });
+        });
+
+        // Atmospheric parallax/hover effect on glass cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const { left, top, width, height } = card.getBoundingClientRect();
+                const x = (e.clientX - left) / width;
+                const y = (e.clientY - top) / height;
+                
+                card.style.setProperty('--mouse-x', `${x * 100}%`);
+                card.style.setProperty('--mouse-y', `${y * 100}%`);
+                card.style.background = `radial-gradient(circle at ${x * 100}% ${y * 100}%, rgba(207,188,255,0.08) 0%, rgba(255, 255, 255, 0.02) 70%)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.background = `linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%)`;
+            });
+        });
+    </script>
+</body></html>

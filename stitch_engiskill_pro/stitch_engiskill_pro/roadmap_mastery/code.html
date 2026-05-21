@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Progress &amp; Roadmap Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700;800&amp;family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(16px);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .inner-glow {
+            box-shadow: inset 0 0 20px rgba(207, 188, 255, 0.05);
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.8s ease-in-out;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .skill-node-active {
+            box-shadow: 0 0 15px rgba(207, 188, 255, 0.4);
+        }
+        body {
+            background-color: #141218;
+            color: #e6e0e9;
+            overflow-x: hidden;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#4f378a",
+                        "on-background": "#e6e0e9",
+                        "surface-variant": "#36343a",
+                        "surface-bright": "#3b383e",
+                        "secondary": "#cdc0e9",
+                        "surface-container": "#211f24",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-dim": "#141218",
+                        "on-primary-container": "#e0d2ff",
+                        "on-error": "#690005",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#e6e0e9",
+                        "secondary-container": "#4d4465",
+                        "on-surface-variant": "#cbc4d2",
+                        "on-tertiary": "#3e2e00",
+                        "on-secondary-container": "#bfb2da",
+                        "secondary-fixed": "#e9ddff",
+                        "inverse-primary": "#6750a4",
+                        "tertiary-fixed": "#ffdf93",
+                        "on-secondary-fixed": "#1f1635",
+                        "primary": "#cfbcff",
+                        "surface-container-high": "#2b292f",
+                        "surface-tint": "#cfbcff",
+                        "primary-fixed-dim": "#cfbcff",
+                        "inverse-on-surface": "#322f35",
+                        "background": "#141218",
+                        "error-container": "#93000a",
+                        "tertiary-container": "#c9a74d",
+                        "surface-container-lowest": "#0f0d13",
+                        "on-primary": "#381e72",
+                        "tertiary-fixed-dim": "#e7c365",
+                        "surface-container-highest": "#36343a",
+                        "primary-fixed": "#e9ddff",
+                        "surface-container-low": "#1d1b20",
+                        "primary-container": "#6750a4",
+                        "on-tertiary-container": "#503d00",
+                        "on-secondary-fixed-variant": "#4b4263",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#141218",
+                        "outline": "#948e9c",
+                        "on-secondary": "#342b4b",
+                        "on-surface": "#e6e0e9",
+                        "on-tertiary-fixed-variant": "#594400",
+                        "tertiary": "#e7c365",
+                        "on-primary-fixed": "#22005d",
+                        "outline-variant": "#494551",
+                        "secondary-fixed-dim": "#cdc0e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "48px",
+                        "container-margin-desktop": "80px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "container-margin-mobile": "20px",
+                        "stack-md": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "body-md": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "code-sm": ["14px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md bg-background text-on-background selection:bg-primary/30">
+<!-- Top Navigation Bar -->
+<header class="w-full sticky top-0 z-50 bg-surface/60 dark:bg-surface/60 backdrop-blur-md border-b border-white/20 dark:border-white/10 shadow-sm flex justify-between items-center px-gutter py-stack-sm w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary">terminal</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary dark:text-primary-fixed-dim">SkillForge</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Home</a>
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Skills</a>
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Materials</a>
+<a class="text-primary font-bold hover:opacity-80 transition-opacity" href="#">Progress</a>
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:opacity-80 transition-opacity">notifications</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayN8ZjNh3Zrk8qvUem7trtGEIjLEsXO_c-Be5h18Rn7zPn2VSRRVFdIkIbg5jegr1YO3xrW5YuKrmUWuSRofElyyjsDh-ctG5yMUp2a9mvQA5pX7WO34Nmv3_QwEvTtEQvFwQ0nDSHOI5hW-apq8sS70IuCTriPm_HjVZKg-3D0lyz7nKtwPrgZxwGFedIoCyVpeRdcsdI3UO4me_Q2TYHMwqqtW9oc-BWIL3wAYbl9le6-P7aqcRvyxwhzu7_KrkoQ-RbgII2drR"/>
+</div>
+</div>
+</header>
+<main class="max-w-[1440px] mx-auto px-gutter md:px-container-margin-desktop py-stack-md space-y-stack-lg">
+<!-- Mastery & Stats Hub (Top Section) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Mastery Circular Progress -->
+<div class="lg:col-span-5 glass-panel rounded-lg p-stack-md flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-stack-md">Overall Mastery</h3>
+<div class="relative w-64 h-64">
+<svg class="w-full h-full" viewbox="0 0 100 100">
+<circle class="text-surface-variant stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-width="8"></circle>
+<circle class="progress-ring-circle text-primary stroke-current" cx="50" cy="50" fill="transparent" r="40" stroke-dasharray="251.2" stroke-dashoffset="70.3" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-display-lg text-on-surface">72%</span>
+<span class="text-on-surface-variant font-code-sm">LEVEL 4</span>
+</div>
+</div>
+<div class="mt-stack-md text-center">
+<p class="text-on-surface-variant max-w-xs">You're in the top 5% of engineers this month. Keep pushing!</p>
+</div>
+</div>
+<!-- Stats Bento Grid -->
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-stack-sm">
+<!-- Stat 1: Learning Hours -->
+<div class="glass-panel rounded-lg p-stack-md flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">schedule</span>
+<span class="text-success text-sm font-bold text-tertiary">+12% vs LW</span>
+</div>
+<div>
+<div class="font-display-lg text-headline-lg">124.5</div>
+<div class="text-on-surface-variant">Hours Logged</div>
+</div>
+</div>
+<!-- Stat 2: Skills Acquired -->
+<div class="glass-panel rounded-lg p-stack-md flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">psychology</span>
+<span class="font-code-sm text-on-surface-variant">Expertise: Mid</span>
+</div>
+<div>
+<div class="font-display-lg text-headline-lg">18</div>
+<div class="text-on-surface-variant">Skills Mastered</div>
+</div>
+</div>
+<!-- Stat 3: Daily Streak -->
+<div class="glass-panel rounded-lg p-stack-md flex flex-col justify-between border-primary/30 inner-glow relative group">
+<div class="absolute top-0 right-0 p-4">
+<span class="animate-pulse flex h-3 w-3 rounded-full bg-primary"></span>
+</div>
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-primary font-bold">STREAKING!</span>
+</div>
+<div>
+<div class="font-display-lg text-headline-lg">14</div>
+<div class="text-on-surface-variant">Day Streak</div>
+</div>
+</div>
+<!-- Stat 4: Community Rank -->
+<div class="glass-panel rounded-lg p-stack-md flex flex-col justify-between hover:border-primary/40 transition-colors">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">leaderboard</span>
+<span class="text-on-surface-variant font-code-sm">Global</span>
+</div>
+<div>
+<div class="font-display-lg text-headline-lg">#422</div>
+<div class="text-on-surface-variant">Rank Position</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Vertical Skill Roadmap (Middle Section) -->
+<section class="space-y-stack-md">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Skill Roadmap</h2>
+<p class="text-on-surface-variant">Your journey to Engineering Excellence</p>
+</div>
+<button class="text-primary border border-primary/20 px-4 py-2 rounded-lg hover:bg-primary/10 transition-colors font-bold">
+                    View Full Path
+                </button>
+</div>
+<div class="glass-panel rounded-lg p-stack-md md:p-stack-lg relative">
+<!-- Vertical Line -->
+<div class="absolute left-1/2 md:left-gutter transform -translate-x-1/2 w-0.5 h-[80%] bg-surface-variant top-[10%] z-0">
+<div class="w-full h-[60%] bg-primary shadow-[0_0_10px_rgba(207,188,255,0.5)]"></div>
+</div>
+<div class="space-y-stack-lg relative z-10">
+<!-- Level 1: Completed -->
+<div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center skill-node-active shrink-0">
+<span class="material-symbols-outlined text-on-primary">check</span>
+</div>
+<div class="flex-1 glass-panel p-stack-md rounded-lg border-primary/20 w-full md:w-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-code-sm text-primary uppercase tracking-widest">Level 1</span>
+<span class="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">Completed</span>
+</div>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile mb-1">Foundations of Logic</h4>
+<p class="text-on-surface-variant">Core syntax, algorithm design, and computational thinking fundamentals.</p>
+</div>
+</div>
+<!-- Level 2: Completed -->
+<div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center skill-node-active shrink-0">
+<span class="material-symbols-outlined text-on-primary">check</span>
+</div>
+<div class="flex-1 glass-panel p-stack-md rounded-lg border-primary/20 w-full md:w-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-code-sm text-primary uppercase tracking-widest">Level 2</span>
+<span class="text-xs bg-primary/20 text-primary px-2 py-0.5 rounded-full">Completed</span>
+</div>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile mb-1">Architecture &amp; Data</h4>
+<p class="text-on-surface-variant">Deep dive into data structures, memory management, and system design.</p>
+</div>
+</div>
+<!-- Level 3: Active -->
+<div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border-2 border-primary flex items-center justify-center shrink-0 ring-4 ring-primary/10">
+<span class="material-symbols-outlined text-primary animate-pulse">pending</span>
+</div>
+<div class="flex-1 glass-panel p-stack-md rounded-lg border-primary/50 inner-glow w-full md:w-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-code-sm text-primary uppercase tracking-widest">Level 3</span>
+<span class="text-xs bg-primary-container text-on-primary-container px-2 py-0.5 rounded-full">In Progress</span>
+</div>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile mb-1">Advanced AI Integration</h4>
+<p class="text-on-surface-variant mb-4">Mastering LLMs, prompt engineering, and autonomous agent orchestration.</p>
+<div class="w-full bg-surface-variant h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[45%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- Level 4: Locked -->
+<div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md opacity-50 grayscale">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+<div class="flex-1 glass-panel p-stack-md rounded-lg w-full md:w-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-code-sm uppercase tracking-widest">Level 4</span>
+<span class="text-xs bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full">Locked</span>
+</div>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile mb-1">Scalable Infrastructure</h4>
+<p class="text-on-surface-variant">Cloud-native development, Kubernetes, and global-scale deployments.</p>
+</div>
+</div>
+<!-- Level 5: Locked -->
+<div class="flex flex-col md:flex-row items-center md:items-start gap-stack-md opacity-50 grayscale">
+<div class="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+<div class="flex-1 glass-panel p-stack-md rounded-lg w-full md:w-auto">
+<div class="flex justify-between items-center mb-2">
+<span class="font-code-sm uppercase tracking-widest">Level 5</span>
+<span class="text-xs bg-surface-variant text-on-surface-variant px-2 py-0.5 rounded-full">Locked</span>
+</div>
+<h4 class="font-headline-lg-mobile text-headline-lg-mobile mb-1">Cybernetic Systems</h4>
+<p class="text-on-surface-variant">Bio-digital interfaces, hardware-software co-design, and quantum prep.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievement Badges (Bottom Section) -->
+<section class="space-y-stack-md">
+<h2 class="font-headline-lg text-headline-lg text-primary">Achievement Badges</h2>
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-stack-sm">
+<!-- Badge 1 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col items-center text-center gap-2 group hover:scale-105 transition-transform">
+<div class="w-16 h-16 rounded-full bg-tertiary/20 flex items-center justify-center border border-tertiary/30 group-hover:bg-tertiary/40 transition-colors">
+<span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<div class="font-bold text-sm">Consistency Master</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">14 Day Streak</div>
+</div>
+</div>
+<!-- Badge 2 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col items-center text-center gap-2 group hover:scale-105 transition-transform">
+<div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30 group-hover:bg-primary/40 transition-colors">
+<span class="material-symbols-outlined text-primary text-4xl">code</span>
+</div>
+<div>
+<div class="font-bold text-sm">Syntactic Sugar</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Zero Errors</div>
+</div>
+</div>
+<!-- Badge 3 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col items-center text-center gap-2 group hover:scale-105 transition-transform">
+<div class="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center border border-secondary/30 group-hover:bg-secondary/40 transition-colors">
+<span class="material-symbols-outlined text-secondary text-4xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<div>
+<div class="font-bold text-sm">Speed Runner</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Top 1% Speed</div>
+</div>
+</div>
+<!-- Badge 4 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col items-center text-center gap-2 group hover:scale-105 transition-transform opacity-40 grayscale">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center border border-outline">
+<span class="material-symbols-outlined text-outline text-4xl">bug_report</span>
+</div>
+<div>
+<div class="font-bold text-sm">Bug Hunter</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Locked</div>
+</div>
+</div>
+<!-- Badge 5 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col items-center text-center gap-2 group hover:scale-105 transition-transform opacity-40 grayscale">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center border border-outline">
+<span class="material-symbols-outlined text-outline text-4xl">hub</span>
+</div>
+<div>
+<div class="font-bold text-sm">Architect</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Locked</div>
+</div>
+</div>
+<!-- Badge 6 -->
+<div class="glass-panel p-4 rounded-lg flex flex-col items-center text-center gap-2 group hover:scale-105 transition-transform opacity-40 grayscale">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center border border-outline">
+<span class="material-symbols-outlined text-outline text-4xl">cloud_done</span>
+</div>
+<div>
+<div class="font-bold text-sm">Cloud Guru</div>
+<div class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Locked</div>
+</div>
+</div>
+</div>
+</section>
+<div class="h-24"></div> <!-- Spacer for Bottom Nav -->
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-base left-gutter right-gutter rounded-xl z-50 bg-surface-container/70 dark:bg-surface-container/70 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-[0_40px_40px_-10px_rgba(0,0,0,0.15)] flex justify-around items-center h-16 w-calc(100%-2*gutter)">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-body-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-xs font-body-md">Skills</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">library_books</span>
+<span class="text-xs font-body-md">Materials</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/40 text-primary-fixed-dim rounded-full p-2 ring-1 ring-primary/50 shadow-[0_0_15px_rgba(207,188,255,0.3)] active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+<span class="text-xs font-body-md">Progress</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-colors duration-300 active:scale-90 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-body-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for circular progress on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const circle = document.querySelector('.progress-ring-circle');
+            const radius = circle.r.baseVal.value;
+            const circumference = radius * 2 * Math.PI;
+            
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+            
+            // Set offset to 72% (circumference * (1 - 0.72))
+            const offset = circumference - (72 / 100 * circumference);
+            
+            setTimeout(() => {
+                circle.style.strokeDashoffset = offset;
+            }, 100);
+        });
+
+        // Hover effect for skill nodes
+        const nodes = document.querySelectorAll('.skill-node-active');
+        nodes.forEach(node => {
+            node.addEventListener('mouseenter', () => {
+                node.classList.add('scale-110');
+            });
+            node.addEventListener('mouseleave', () => {
+                node.classList.remove('scale-110');
+            });
+        });
+    </script>
+</body></html>
