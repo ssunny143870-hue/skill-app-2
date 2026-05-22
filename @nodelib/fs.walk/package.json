@@ -1,17 +1,17 @@
 {
-  "name": "@nodelib/fs.scandir",
-  "version": "2.1.5",
-  "description": "List files and directories inside the specified directory",
+  "name": "@nodelib/fs.walk",
+  "version": "1.2.8",
+  "description": "A library for efficiently walking a directory recursively",
   "license": "MIT",
-  "repository": "https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.scandir",
+  "repository": "https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.walk",
   "keywords": [
     "NodeLib",
     "fs",
     "FileSystem",
     "file system",
-    "scandir",
-    "readdir",
-    "dirent"
+    "walk",
+    "scanner",
+    "crawler"
   ],
   "engines": {
     "node": ">= 8"
@@ -19,7 +19,8 @@
   "files": [
     "out/**",
     "!out/**/*.map",
-    "!out/**/*.spec.*"
+    "!out/**/*.spec.*",
+    "!out/**/tests/**"
   ],
   "main": "out/index.js",
   "typings": "out/index.d.ts",
@@ -33,12 +34,11 @@
     "watch": "npm run clean && npm run compile:watch"
   },
   "dependencies": {
-    "@nodelib/fs.stat": "2.0.5",
-    "run-parallel": "^1.1.9"
+    "@nodelib/fs.scandir": "2.1.5",
+    "fastq": "^1.6.0"
   },
   "devDependencies": {
-    "@nodelib/fs.macchiato": "1.0.4",
-    "@types/run-parallel": "^1.1.0"
+    "@nodelib/fs.macchiato": "1.0.4"
   },
-  "gitHead": "d6a7960d5281d3dd5f8e2efba49bb552d090f562"
+  "gitHead": "1e5bad48565da2b06b8600e744324ea240bf49d8"
 }
